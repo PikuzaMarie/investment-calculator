@@ -1,14 +1,16 @@
-import { INPUTS_CONFIG } from '../../common/constants/inputsConfig';
-
-export function InputGroup() {
+export function InputGroup({ inputData, onInputChange }) {
   return (
     <section id="user-input">
       <div className="input-group">
-        {INPUTS_CONFIG.map((input, index) => (
+        {inputData.map((input, index) => (
           <p key={index}>
             <label>
               {input.label}
-              <input type={input.type} value={input.value} />
+              <input
+                type={input.type}
+                value={input.value === 0 ? '' : input.value}
+                onChange={event => onInputChange(event, input.label)}
+              />
             </label>
           </p>
         ))}
