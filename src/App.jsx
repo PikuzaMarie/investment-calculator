@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Header } from './components/Header';
 import { InputGroup } from './components/InputGroup';
 import { INPUTS_CONFIG } from './common/constants/inputsConfig';
+import { ResultTable } from './components/ResultTable/ResultTable';
 
 function App() {
   const [userInputData, setUserInputData] = useState(INPUTS_CONFIG);
@@ -16,6 +17,8 @@ function App() {
     );
   };
 
+  const inputValues = userInputData.map(input => input.value);
+
   return (
     <>
       <Header />
@@ -23,6 +26,7 @@ function App() {
         inputData={userInputData}
         onInputChange={handleUserInputChange}
       />
+      <ResultTable inputValues={inputValues} />
     </>
   );
 }
